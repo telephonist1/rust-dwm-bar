@@ -17,7 +17,7 @@ pub fn lang() -> String {
     let lang = Command::new("setxkbmap")
         .arg("-query")
         .output()
-        .expect("Failed to execute command!");
+        .expect("setxkbmap failed");
     let lang = String::from_utf8_lossy(&lang.stdout);
     let lang = lang.split_whitespace();
     let lang: Vec<&str> = lang.collect();
@@ -28,7 +28,7 @@ pub fn volume() -> String {
     let volume = Command::new("pulsemixer")
         .arg("--get-volume")
         .output()
-        .expect("Failed to execute command");
+        .expect("pulsemixer failed");
     let volume = String::from_utf8_lossy(&volume.stdout);
     let volume = volume.split_whitespace();
     let volume: Vec<&str> = volume.collect();
@@ -56,7 +56,7 @@ pub fn run() {
             .arg("-name")
             .arg(status())
             .spawn()
-            .expect("Failed to execute command!");
+            .expect("xsetroot failed");
 	thread::sleep(time::Duration::from_secs(3));
     }
 }
