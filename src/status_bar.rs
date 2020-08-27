@@ -60,10 +60,3 @@ pub fn run() {
 	thread::sleep(time::Duration::from_secs(3));
     }
 }
-
-
-
-
-
-
-
